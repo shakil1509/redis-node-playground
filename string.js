@@ -9,9 +9,15 @@ async function setValue(key, value){
         console.error("Error setting data to Redis:", error);
     }
 }
+<<<<<<< HEAD
   // "XX" and other options are available since Redis 7.0.
   await redis.expireat("foo", Math.round(Date.now() / 1000) + 40, "XX");
   console.log(await redis.ttl("foo")); // a number smaller or equal to 40 
+=======
+// expireat accepts unix time in seconds.
+await redis.expireat("foo", Math.round(Date.now() / 1000) + 30);
+console.log(await redis.ttl("foo")); // a number smaller or equal to 30
+>>>>>>> 011c4f2ec3af4ece7edfd9e71020baf701c09ed9
 setValue("user:4","Himanshu");
 async function getValue() {
     try {
