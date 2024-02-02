@@ -9,6 +9,9 @@ async function setValue(key, value){
         console.error("Error setting data to Redis:", error);
     }
 }
+// expireat accepts unix time in seconds.
+await redis.expireat("foo", Math.round(Date.now() / 1000) + 30);
+console.log(await redis.ttl("foo")); // a number smaller or equal to 30
 setValue("user:4","Himanshu");
 async function getValue() {
     try {
